@@ -11,9 +11,7 @@ describe("Lock", function () {
   // and reset Hardhat Network to that snapshot in every test.
   async function deployOneYearLockFixture() {
     const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-    const ONE_GWEI = 1_000_000_000;
-
-    const lockedAmount = ONE_GWEI;
+    const lockedAmount = 1_000_000_000;
     const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
 
     // Contracts are deployed using the first signer/account by default

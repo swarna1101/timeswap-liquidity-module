@@ -6,7 +6,7 @@
 ##  Reward
 ###  Admin functionality
 
-####  Setting the DOUGH token
+####  Setting the TimeswapLiquidityToken token
 
 To allow for the `TimeswapLiquidityToken` token to be migrated it can be changed by the ``owner``.
 

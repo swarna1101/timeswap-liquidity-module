@@ -117,46 +117,6 @@ Popular tokens for LPs on the Balancer platform are:
 -   WBTC
 -   AAVE
 
-### 3.  [PancakeSwap](https://pancakeswap.finance/)
-
-Unlike the UniSwap and Balancer, both of which are used for trading ERC-20 tokens, PancakeSwap is based on the more recent  [Binance Smart Chain](https://finbold.com/guide/binance-smart-chain/)  (BSC), giving traders and liquidity providers access to BEP-20 tokens. It has several advantages over its competition, including:
-
--   It’s fast;
--   Transactions fees are much lower;
--   Most of its liquidity pools offer higher returns;
--   It is a late entrant into the DeFi scene benefiting from other platforms’ market experiences.
-
-PancakeSwap inherits the advantages of the BSC, which is a fork of the Ethereum blockchain. It is a fast, cheap, and eco-friendly blockchain due to its use of the Proof of Staked Authority (PoSA) mechanism. Other than its consensus mechanism, the BSC blockchain is almost identical to Ethereum and can even be accessed through the popular MetaMask Ethereum wallet.
-
-
-
-## Operations of automated liquidity pools
-the creation and operations of automated liquidity pools using Symbol from NEM and compatible networks.
-
-Swapable assets consist in combining two cryptocurrencies in a liquidity pool to define an invariant `k` using a constant product formula of: `x * y = k`  where `x` and `y` represent the cryptocurrencies that are paired in said liquidity pool. The shares of liquidity providers are determined with another asset that we call the **pool shares mosaic** and which is issued at the time of creation of a liquidity pool, i.e. each liquidity pool will have its own pool shares mosaic.
-
-A swapable asset may be paired with any other cryptocurrency provided that they reside on the same blockchain network.
-
-Liquidity providers add liquidity into pools and Traders can swap currencies. A fee is added to each trade at the rate of 0.30% which are then added to token reserves. Providers can withdraw their shares of the total reserve at any time.
-
-When liquidity is added by a provider, they will be assigned some **Pool Shares**. Those shares can then be burned at any time by providers in order to take back their part of pooled assets.
-
-An automated liquidity pool is represented by the following properties:
-
-- **A target account**: Consists of a public account which holds the funds of said pool. This account SHOULD be converted to a multi-signature account, i.e cosignatories can be the operators of a DAO (see @ubcdigital/governable).
-
-- **A pool shares mosaic**: Consists of a digital asset that is created only for the purpose of keeping track liquidity provider shares in pools. These assets can be burned for pooled assets at any time but are not exchangeable for other cryptocurrencies. Using Symbol from NEM, this asset is represented by a **non-transferrable** mosaic.
-
-## Contracts to be used
-
-| Contract Name | Description |
-| --- | --- |
-| **CreatePool** | Contract for *creating* a new liquidity pool. This contract is typically executed by liquidity providers and require the input of two different cryptocurrencies marked `x` and `y` which form the liquidity pool, a.k.a the market pair. |
-| **AddLiquidity** | Contract for *adding liquidity* to an already existing liquidity pool. This contract is typically executed by liquidity providers and requires the input of two cryptocurrencies that have previously been paired in a liquidity pool with the `CreatePool` contract. |
-| **RemoveLiquidity** | Contract for *removing liquidity* from an already existing liquidity pool. This contract is typically executed by liquidity providers and requires the input of two cryptocurrencies that have previously been paired in a liquidity pool with the `CreatePool` contract. |
-| **Swap** | Contract for *swapping currencies*. This contract is typically executed by traders and requires the input of one cryptocurrency and one output denominator. Prior to the execution of *swaps* between `x` and `y`, a liquidity pool must exist that provides liquidity for the market pair `x:y`, i.e. using the `CreatePool` contract. | 
------
-
 
 ## Conclusion
 Liquidity mining is becoming increasingly popular amongst crypto investors for a good reason.

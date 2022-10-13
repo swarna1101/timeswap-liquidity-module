@@ -73,3 +73,28 @@ Bancor, for example, lets customers lock a single token in one of its pools (as 
 |As a result of the unique business strategy, there is reduced counterparty risk.|There is no support for fiat currencies.|
 |On the Bancor network, a considerable number of ERC20 tokens are supported.|The interface comprises of a simple order box and there is no trading platform supplied.
 -----
+
+## 5.  **[Uniswap](https://www.pvot.in/blog/uniswap-detailed-review/)**
+
+### What is Uniswap?
+Uniswap is a leading cryptocurrency asset exchange that operates on the Ethereum blockchain. It is distinct from traditional exchanges in that it proposes a fully disintermediated, decentralized ecosystem in which no single entity is permitted to own, control, or operate its network. Furthermore, Uniswap employs a relatively new trading model known as an automated liquidity protocol, which eliminates the need for trusted intermediaries and prioritizes decentralisation and security.
+Because it is based on Ethereum, Uniswap is fully compatible with all ERC-20 tokens as well as other Ethereum infrastructures such as wallet services like Metamask and MyEtherWallet. Furthermore, the Uniswap platform is completely open-source, which means that anyone, for example, Sushiswap, can essentially copy its codebase and redeploy it to create a similar DeFi protocol. It is straightforward, anonymous, and simple to use.
+
+###  How does it work?
+Uniswap is a decentralised exchange that operates as an "automated market maker" (AMM). Smart contracts (programs written on the blockchain) are used by AMMs to set prices and execute trades. Because they are decentralised, these exchanges do not have a centralised governing body that manages orders. They can provide decentralised financial services, also known as DeFi. Because of their liquidity pools, AMMs such as Uniswap can offer crypto trading. A liquidity pool is a collection of user-contributed crypto funds that are locked in a smart contract. When people want to trade cryptocurrency, they use funds from the liquidity pool.
+
+Uniswap deducts a small fee from each transaction and distributes it among the liquidity providers in a pool (the people who have deposited their crypto into the pool). It's a win-win situation for both parties. Because of its liquidity providers, Uniswap is able to offer crypto trading, and its liquidity providers earn crypto because they all receive a cut of the exchange's transaction fees.
+
+![enter image description here](https://docs.uniswap.org/assets/images/anatomy-82d82239e5417e36ca9da17d14961434.jpg)
+
+### Pros and Cons
+|Pros|Cons  |
+|--|--|
+| The Internet Computer provides a decentralised, censorship-free framework. | In just a few days of trading, ICP has seen large jumps and sharp declines, making it extremely volatile and susceptible to fluctuations. |
+|The Internet Computer is open to the public and can be accessed by anyone in the world.|Regardless of technological advancements, ICP is not significantly different from other altcoins.|
+|Internet Computer began its journey with significant investor interest, charting the course from the start.|Its decentralisation and permissionless transactions are fraught with uncertainty.|
+|ICP is available on the majority of cryptocurrency exchanges.|The future of ICP and the network is based on possibilities rather than certainties.|
+|Since their introduction, Internet Computer and ICP have gotten a lot of attention.||
+|Development is supported by a strong and stable team.||
+|Smart contracts are supported, and more can be added in the future.
+---

@@ -87,14 +87,4 @@ Uniswap deducts a small fee from each transaction and distributes it among the l
 
 ![enter image description here](https://docs.uniswap.org/assets/images/anatomy-82d82239e5417e36ca9da17d14961434.jpg)
 
-### Pros and Cons
-|Pros|Cons  |
-|--|--|
-| The Internet Computer provides a decentralised, censorship-free framework. | In just a few days of trading, ICP has seen large jumps and sharp declines, making it extremely volatile and susceptible to fluctuations. |
-|The Internet Computer is open to the public and can be accessed by anyone in the world.|Regardless of technological advancements, ICP is not significantly different from other altcoins.|
-|Internet Computer began its journey with significant investor interest, charting the course from the start.|Its decentralisation and permissionless transactions are fraught with uncertainty.|
-|ICP is available on the majority of cryptocurrency exchanges.|The future of ICP and the network is based on possibilities rather than certainties.|
-|Since their introduction, Internet Computer and ICP have gotten a lot of attention.||
-|Development is supported by a strong and stable team.||
-|Smart contracts are supported, and more can be added in the future.
----
+

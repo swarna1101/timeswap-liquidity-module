@@ -108,7 +108,42 @@ For example, in a given month:
 
 In addition, staking rewards incentivize BNT token holders to become _active_ participants in the network. Users who are unwilling to stake their BNT in the system would see their BNT slowly diluted, while users who contribute “work” (or liquidity) on the system would gradually increase their share of protocol ownership.
 
+## 6.  Euler Incentive Program
+Euler Finance is a capital-efficient money market protocol that allows for lending and borrowing on any crypto asset. Euler adjusts composability of each token based on consensus risk profile in order to reduce systemic risk. Euler will have its own governance token to manage communal decisions.
 
+-  **Tiered Assets**: Tokens are given traits, and each tier represents different in-market capabilities.
+- **Permission-less Listing**: Any token involved with a Uniswap v3 WETH pair can be added onto Euler.
+- **Interest Rates:** Instead of using a linear interest rate curve that pre-determines interest rates based on utilization, Euler
+  leverages a control theory model to maximize capital efficiency.
+-  **Protected Collateral:** Collateral can be placed in a separate pool that is not accessible by accessible by borrowers, which can limit
+   overall risk, whereby the only trade-off is opportunity cost of
+   interest.
+- **Other factors:** Euler is introducing other neat features, including MEV-resistant liquidations, multi-collateral stability
+  pools, and TWAP oracles.
 
+### Tiered Assets:
+On Euler, there will be 3 tiers of tokens, each representing different features. Governance will vote on which tier each asset falls into. One important factor to consider is that although Euler creates a yield opportunity for lower-cap tokens, these lenders still have the option of becoming liquidity providers to earn yield.
 
+- **Isolation-tier assets:** can be lent or borrowed but cannot be used as collateral. Only one isolation-tier asset can be borrowed per account. Examples of potential isolation-tier assets include tokens with market capitalizations under $20 million, or tokens that have been previously hacked, or high-risk tokens.
+
+- **Cross-tier assets**: can be lent or borrowed but cannot be used as collateral. Crosstier assets can be borrowed alongside each other. Compared to isolation-tier assets, cross-tier assets will have more established communities and metrics, and can be considered mid-market tokens.
+
+- **Collateral-tier assets:** This tier is most similar to how the current major DeFi money market protocol works; assets can be used for borrowing and lending, and can also collateralized.
+### Permission-less Listing:
+
+Given Euler’s new tiered structure, anybody can list an asset on the Euler money market, so long as its part of a Uniswap v3 WETH pair. The reason why it needs to have a Uniswap pair is because Euler’s price feeds are sourced from a Uniswap TWAP oracle. Euler is therefore able to capture an untapped market without sacrificing any current major money market features.
+
+### Interest Rates:
+The current consensus money market interest rate solution revolves around linear curves, whereby the interest rate increases as the utilization increases. One particular flaw of this model is that it assumes borrowing cost is perfectly placed at all different intervals. However, if interest rates move in too much of a shallow manner, then lenders sacrifice potential gains, and if rates are too steep, then utilization will not reach an optimal point.
+
+### Protected Collateral:
+Whenever a user collateralizes their assets, they are exposed to protocol risk, in case a fault causes that collateral to be seized. There is no way around this currently: Compound and AAVE users’ collateral goes towards money market pools. On Euler, users are able to forego the interest that they earn on their collateral and protect their assets. This allows for instantaneous withdrawals regardless of borrower/utilization status, and helps protect against other risks such as governance manipulation. We predict that many users will decide to use this unprecedented feature, because the interest rate on most assets being collateralized is usually quite low – a majority of users do not want to take out a loan denominated in BTC or ETH and on markets like AAVE, APR %’s for BTC and ETH are below 1%.
+
+### Other Factors:
+- **MEV-Resistant liquidations**: Instead of fixed percentage discounts for liquidators on violated loans, Euler uses a Dutch auction style, by which the discount increases over time, and each liquidator decides when to enter bidding based on their own profit analysis. This effectively pushes profit of liquidations close to zero. Euler will offer a
+  ‘discount booster’ for liquidity providers on Euler in order to prevent miners and runners. This way, a real liquidity provider might bid sooner than a miner. For example, if break-even for both a miner and a regular liquidator is 2%, the regular liquidator will bid at 1% (given they have a theoretical 1.1% booster).
+- **TWAP**: Euler Finance leverages a tool that calculates mean price over a time interval, in order to protect from flash loan and bot manipulation. C.R.E.A.M. Finance was drained for $25 million on August 30th from a flash loan attack, which is the 2nd time this has happened in this year alone. TWAP is also beneficial because it is hard to manipulate a price on one specific exchange over sustained period of time, especially because arbitrageurs are automatically scanning the aggregate market and can take advantage of price asymmetries very quickly.
+- **Multi-Collateral Stability Pools**: Euler aims to internalize the liquidation process by allowing lenders to deposit their interest bearing eTokens into a stability pool, and this pool can be used to liquidate a borrower’s collateral into the stability pool. Liquidators are essentially swapping eTokens for a basket of collateral assets. Advantages of internal liquidations include, no slippage or swap fees, less gas fees, and more accurate liquidation prices.
+
+![enter image description here](https://www.coinbureau.com/wp-content/uploads/2022/07/loan.jpg.webp)
 

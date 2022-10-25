@@ -5,5 +5,8 @@
   },
   "scripts": {
     "test": "npx hardhat test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3"
   }
 }

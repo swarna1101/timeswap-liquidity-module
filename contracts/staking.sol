@@ -12,7 +12,7 @@ contract Staking is ERC1155Holder {
     IERC1155 public liqToken;
     IERC20 private token;
 
-    uint256 constant month = 30 * 24 * 60 * 60;
+    uint256 constant secs = 60;
     uint256 constant denominator = 100;
 
     event liqTokenstaked(
@@ -66,8 +66,8 @@ contract Staking is ERC1155Holder {
         emit liqTokenstaked(msg.sender, _tokenId, _amount, block.timestamp);
     }
 
-    // Function to unstake the liqTokens and distribute rewards.
-    // Reward Tokens = Staked Amount * Reward Rate * Elapsed Time / RewardInterval
+    // Function to unstake the liqTokens and distribute timeswapToken are rewards.
+    // Reward Tokens = Staked Amount / denominator
 
     function unstakeliqToken(uint256 _tokenId, uint256 _amount) external {
         require(
@@ -91,9 +91,8 @@ contract Staking is ERC1155Holder {
         uint256 timeElapsed = block.timestamp -
         stakesMapping[msg.sender].timestamp;
         uint256 rewardTokens = (_calculateRate() *
-        timeElapsed *
         _amount *
-        10**18) / (month * 12 * denominator);
+        10**18) / (secs * denominator);
 
         token.safeTransfer(msg.sender, rewardTokens);
 
@@ -111,15 +110,13 @@ contract Staking is ERC1155Holder {
     function _calculateRate() internal view returns (uint256) {
         uint256 timeElapsed = block.timestamp -
         stakesMapping[msg.sender].timestamp;
+        uint256 allowedPercent;
 
-        if (timeElapsed < month) {
-            return 0;
-        } else if (timeElapsed < month * 6) {
-            return 5;
-        } else if (timeElapsed < month * 12) {
-            return 10;
-        } else {
-            return 15;
+        for(uint8 i = 0; i < secs; i++){
+            if(timeElapsed>=i){
+                 allowedPercent=i;
+            }
         }
+        return allowedPercent;
     }
 }

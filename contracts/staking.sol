@@ -11,8 +11,7 @@ contract Staking is ERC1155Holder {
 
     IERC1155 public liqToken;
     IERC20 private token;
-
-    uint256 constant secs = 60;
+    uint256 constant public PERIOD = 60 seconds;
     uint256 constant denominator = 100;
 
     event liqTokenstaked(
@@ -106,21 +105,41 @@ contract Staking is ERC1155Holder {
 
     }
 
+
     // Function to calculate Reward Rate in percentage
 
     function _calculateRate() internal view returns (uint256) {
-        uint256 allowedPercent;
-        uint256 timeElapsed = block.timestamp - stakesMapping[msg.sender].timestamp;
 
-        for(uint256 i = 0; i < 10; i++) {
-            if (timeElapsed >= i * secs && timeElapsed < (i + 1) * secs) {
-                allowedPercent = (i + 1) * denominator;
-            }
-
-        }
-
-
-        return allowedPercent;
-
+        uint256 time = block.timestamp - stakesMapping[msg.sender].timestamp;
+        uint256 rate = (time / PERIOD) * denominator;
+        return rate;
     }
+
+    // Function to calculate Reward Tokens
+
+    function _calculateReward() internal view returns (uint256) {
+        uint256 rate = _calculateRate();
+        uint256 rewardTokens = (stakesMapping[msg.sender].amount * rate) / denominator;
+        return rewardTokens;
+    }
+
+    // Function to claim the reward tokens
+
+    function claimReward() external {
+        require(
+            stakesMapping[msg.sender].tokenId != 0,
+            "You have not staked any tokens!"
+        );
+
+        uint256 rewardTokens = _calculateReward();
+        token.safeTransfer(msg.sender, rewardTokens);
+    }
+
+
+
+
+
+
+
 }
+

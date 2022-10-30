@@ -21,6 +21,7 @@ contract Staking is ERC1155Holder {
         uint256 amount,
         uint256 time
     );
+
     event liqTokenunstaked(
         address indexed owner,
         uint256 id,
@@ -88,13 +89,12 @@ contract Staking is ERC1155Holder {
             "0x00"
         );
 
-        uint256 timeElapsed = block.timestamp -
-        stakesMapping[msg.sender].timestamp;
-        uint256 rewardTokens = (_calculateRate() *
-        _amount *
-        10**18) / (secs * denominator);
-
+        uint256 rewardTokens = _amount / denominator;
         token.safeTransfer(msg.sender, rewardTokens);
+
+
+
+
 
         emit liqTokenunstaked(
             msg.sender,
@@ -103,20 +103,24 @@ contract Staking is ERC1155Holder {
             block.timestamp,
             rewardTokens
         );
+
     }
 
     // Function to calculate Reward Rate in percentage
 
     function _calculateRate() internal view returns (uint256) {
-        uint256 timeElapsed = block.timestamp -
-        stakesMapping[msg.sender].timestamp;
         uint256 allowedPercent;
+        uint256 timeElapsed = block.timestamp - stakesMapping[msg.sender].timestamp;
 
-        for(uint8 i = 0; i < secs; i++){
-            if(timeElapsed>=i){
-                 allowedPercent=i;
+        for(uint256 i = 0; i < 10; i++) {
+            if (timeElapsed >= i * secs && timeElapsed < (i + 1) * secs) {
+                allowedPercent = (i + 1) * denominator;
             }
+
         }
+
+
         return allowedPercent;
+
     }
 }
